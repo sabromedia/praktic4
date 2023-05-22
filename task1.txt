@@ -1,0 +1,98 @@
+<Window x:Class="praktic4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:praktic4"
+        mc:Ignorable="d"
+        Title="Описание числа" Height="236.029" Width="455.515">
+    <Grid>
+        <Label Content="Введите направление робота (С, З, Ю, В):" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="directionTextBox" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Введите команду (0, 1, -1):" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="commandTextBox" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Определить направление" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="150" Click="BtnOK_Click"/>
+        <Label x:Name="resultLabel" Content="" HorizontalAlignment="Left" Margin="170,35,0,0" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>
+
+
+namespace praktic4
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void BtnOK_Click(object sender, RoutedEventArgs e)
+        {
+            char direction = char.Parse(directionTextBox.Text);
+            int command = int.Parse(commandTextBox.Text);
+
+            switch (direction)
+            {
+                case 'С':
+                    if (command == 0)
+                    {
+                        resultLabel.Content = "Север";
+                    }
+                    else if (command == 1)
+                    {
+                        resultLabel.Content = "Запад";
+                    }
+                    else if (command == -1)
+                    {
+                        resultLabel.Content = "Восток";
+                    }
+                    break;
+                case 'З':
+                    if (command == 0)
+                    {
+                        resultLabel.Content = "Запад";
+                    }
+                    else if (command == 1)
+                    {
+                        resultLabel.Content = "Юг";
+                    }
+                    else if (command == -1)
+                    {
+                        resultLabel.Content = "Север";
+                    }
+                    break;
+                case 'Ю':
+                    if (command == 0)
+                    {
+                        resultLabel.Content = "Юг";
+                    }
+                    else if (command == 1)
+                    {
+                        resultLabel.Content = "Восток";
+                    }
+                    else if (command == -1)
+                    {
+                        resultLabel.Content = "Запад";
+                    }
+                    break;
+                case 'В':
+                    if (command == 0)
+                    {
+                        resultLabel.Content = "Восток";
+                    }
+                    else if (command == 1)
+                    {
+                        resultLabel.Content = "Север";
+                    }
+                    else if (command == -1)
+                    {
+                        resultLabel.Content = "Юг";
+                    }
+                    break;
+                default:
+                    resultLabel.Content = "Неверное направление робота";
+                    break;
+            }
+        }
+    }
+}

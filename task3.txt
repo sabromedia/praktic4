@@ -1,0 +1,79 @@
+<Window x:Class="praktic4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:praktic4"
+        mc:Ignorable="d"
+         Title="Окружность" Height="197.426" Width="379.412">
+    <Grid>
+        <Label Content="Введите номер элемента (1-4):" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="numberTextBox" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Введите значение элемента:" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="valueTextBox" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Вычислить" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="75" Click="BtnOK_Click"/>
+        <Label x:Name="resultLabel1" Content="" HorizontalAlignment="Left" Margin="193,7,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label x:Name="resultLabel2" Content="" HorizontalAlignment="Left" Margin="193,33,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label x:Name="resultLabel3" Content="" HorizontalAlignment="Left" Margin="193,60,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label x:Name="resultLabel4" Content="" HorizontalAlignment="Left" Margin="193,85,0,0" VerticalAlignment="Top" Width="168"/>
+    </Grid>
+</Window>
+
+
+
+namespace praktic4
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void BtnOK_Click(object sender, RoutedEventArgs e)
+        {
+            int number = int.Parse(numberTextBox.Text);
+            double value = double.Parse(valueTextBox.Text);
+
+            double radius = 0;
+            double diameter = 0;
+            double length = 0;
+            double area = 0;
+
+            switch (number)
+            {
+                case 1:
+                    radius = value;
+                    diameter = 2 * radius;
+                    length = 2 * 3.14 * radius;
+                    area = 3.14 * radius * radius;
+                    break;
+                case 2:
+                    diameter = value;
+                    radius = diameter / 2;
+                    length = 2 * 3.14 * radius;
+                    area = 3.14 * radius * radius;
+                    break;
+                case 3:
+                    length = value;
+                    radius = length / (2 * 3.14);
+                    diameter = 2 * radius;
+                    area = 3.14 * radius * radius;
+                    break;
+                case 4:
+                    area = value;
+                    radius = Math.Sqrt(area / 3.14);
+                    diameter = 2 * radius;
+                    length = 2 * 3.14 * radius;
+                    break;
+                default:
+                    break;
+            }
+
+            resultLabel1.Content = "Радиус: " + radius.ToString();
+            resultLabel2.Content = "Диаметр: " + diameter.ToString();
+            resultLabel3.Content = "Длина: " + length.ToString();
+            resultLabel4.Content = "Площадь: " + area.ToString();
+        }
+    }
+}

@@ -1,0 +1,97 @@
+<Window x:Class="praktic4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:praktic4"
+        mc:Ignorable="d"
+        Title="Описание возраста" Height="150" Width="300">
+    <Grid>
+        <Label Content="Введите возраст (20-69):" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ageTextBox" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Описание" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="75" Click="BtnOK_Click"/>
+        <Label x:Name="resultLabel" Content="" HorizontalAlignment="Left" Margin="120,60,0,0" VerticalAlignment="Top" Width="160"/>
+    </Grid>
+</Window>
+
+
+namespace praktic4
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void BtnOK_Click(object sender, RoutedEventArgs e)
+        {
+            int age = int.Parse(ageTextBox.Text);
+            string description = "";
+
+            int lastDigit = age % 10;
+
+            switch (age)
+            {
+                case 20:
+                    description = "двадцать лет";
+                    break;
+                case 30:
+                    description = "тридцать лет";
+                    break;
+                case 40:
+                    description = "сорок лет";
+                    break;
+                case 50:
+                    description = "пятьдесят лет";
+                    break;
+                case 60:
+                    description = "шестьдесят лет";
+                    break;
+                default:
+                    if (age >= 21 && age <= 29)
+                    {
+                        description = "двадцать ";
+                    }
+                    else if (age >= 31 && age <= 39)
+                    {
+                        description = "тридцать ";
+                    }
+                    else if (age >= 41 && age <= 49)
+                    {
+                        description = "сорок ";
+                    }
+                    else if (age >= 51 && age <= 59)
+                    {
+                        description = "пятьдесят ";
+                    }
+                    else if (age >= 61 && age <= 69)
+                    {
+                        description = "шестьдесят ";
+                    }
+
+                    switch (lastDigit)
+                    {
+                        case 1:
+                            description += "один год";
+                            break;
+                        case 2:
+                            description += "два года";
+                            break;
+                        case 3:
+                            description += "три года";
+                            break;
+                        case 4:
+                            description += "четыре года";
+                            break;
+                        default:
+                            description += "лет";
+                            break;
+                    }
+                    break;
+            }
+
+            resultLabel.Content = description;
+        }
+    }
+}

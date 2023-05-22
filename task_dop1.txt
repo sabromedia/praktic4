@@ -1,0 +1,54 @@
+<Window x:Class="praktic4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:praktic4"
+        mc:Ignorable="d"
+          Title="Описание количества учебных заданий" Height="208.456" Width="394.853">
+    <Grid>
+        <Label Content="Введите количество учебных заданий (10-40):" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="numberTextBox" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Описать" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="75" Click="BtnOK_Click"/>
+        <Label x:Name="resultLabel" Content="" HorizontalAlignment="Left" Margin="140,60,0,0" VerticalAlignment="Top" Width="237"/>
+    </Grid>
+</Window>
+
+
+namespace praktic4
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void BtnOK_Click(object sender, RoutedEventArgs e)
+        {
+            int n = int.Parse(numberTextBox.Text);
+            string description = "";
+
+            if (n >= 10 && n <= 40)
+            {
+                int lastDigit = n % 10;
+                switch (lastDigit)
+                {
+                    case 1:
+                        description = n + " учебное задание";
+                        break;
+                    case 2:
+                    case 3:
+                    case 4:
+                        description = n + " учебных задания";
+                        break;
+                    default:
+                        description = n + " учебных заданий";
+                        break;
+                }
+            }
+
+            resultLabel.Content = description;
+        }
+    }
+}
