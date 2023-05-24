@@ -27,22 +27,139 @@ namespace praktic4
             int n = int.Parse(numberTextBox.Text);
             string description = "";
 
-            if (n >= 10 && n <= 40)
+            if (n >= 100 && n <= 999)
             {
-                int lastDigit = n % 10;
-                switch (lastDigit)
+                int hundreds = n / 100;
+                int tens = (n / 10) % 10;
+                int ones = n % 10;
+
+                switch (hundreds)
                 {
                     case 1:
-                        description = n + " учебное задание";
+                        description += "сто ";
                         break;
                     case 2:
+                        description += "двести ";
+                        break;
                     case 3:
+                        description += "триста ";
+                        break;
                     case 4:
-                        description = n + " учебных задания";
+                        description += "четыреста ";
                         break;
-                    default:
-                        description = n + " учебных заданий";
+                    case 5:
+                        description += "пятьсот ";
                         break;
+                    case 6:
+                        description += "шестьсот ";
+                        break;
+                    case 7:
+                        description += "семьсот ";
+                        break;
+                    case 8:
+                        description += "восемьсот ";
+                        break;
+                    case 9:
+                        description += "девятьсот ";
+                        break;
+                }
+
+                if (tens == 1)
+                {
+                    switch (ones)
+                    {
+                        case 0:
+                            description += "десять";
+                            break;
+                        case 1:
+                            description += "одиннадцать";
+                            break;
+                        case 2:
+                            description += "двенадцать";
+                            break;
+                        case 3:
+                            description += "тринадцать";
+                            break;
+                        case 4:
+                            description += "четырнадцать";
+                            break;
+                        case 5:
+                            description += "пятнадцать";
+                            break;
+                        case 6:
+                            description += "шестнадцать";
+                            break;
+                        case 7:
+                            description += "семнадцать";
+                            break;
+                        case 8:
+                            description += "восемнадцать";
+                            break;
+                        case 9:
+                            description += "девятнадцать";
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (tens)
+                    {
+                        case 2:
+                            description += "двадцать ";
+                            break;
+                        case 3:
+                            description += "тридцать ";
+                            break;
+                        case 4:
+                            description += "сорок ";
+                            break;
+                        case 5:
+                            description += "пятьдесят ";
+                            break;
+                        case 6:
+                            description += "шестьдесят ";
+                            break;
+                        case 7:
+                            description += "семьдесят ";
+                            break;
+                        case 8:
+                            description += "восемьдесят ";
+                            break;
+                        case 9:
+                            description += "девяносто ";
+                            break;
+                    }
+
+                    switch (ones)
+                    {
+                        case 1:
+                            description += "один";
+                            break;
+                        case 2:
+                            description += "два";
+                            break;
+                        case 3:
+                            description += "три";
+                            break;
+                        case 4:
+                            description += "четыре";
+                            break;
+                        case 5:
+                            description += "пять";
+                            break;
+                        case 6:
+                            description += "шесть";
+                            break;
+                        case 7:
+                            description += "семь";
+                            break;
+                        case 8:
+                            description += "восемь";
+                            break;
+                        case 9:
+                            description += "девять";
+                            break;
+                    }
                 }
             }
 
@@ -50,6 +167,5 @@ namespace praktic4
         }
     }
 }
-
 
 

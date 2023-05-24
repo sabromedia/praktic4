@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:praktic4"
         mc:Ignorable="d"
-          Title="Описание количества учебных заданий" Height="208.456" Width="394.853">
+         Title="Описание числа" Height="150" Width="300">
     <Grid>
-        <Label Content="Введите количество учебных заданий (10-40):" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Введите целое число (100-999):" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="numberTextBox" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Content="Описать" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="75" Click="BtnOK_Click"/>
-        <Label x:Name="resultLabel" Content="" HorizontalAlignment="Left" Margin="140,60,0,0" VerticalAlignment="Top" Width="237"/>
+        <Label x:Name="resultLabel" Content="" HorizontalAlignment="Left" Margin="140,60,0,0" VerticalAlignment="Top" Width="150"/>
     </Grid>
 </Window>
